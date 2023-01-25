@@ -1,0 +1,29 @@
+name: Deployer Test
+
+# Trigger the workflow on push and
+# pull request events on the production branch
+on:
+  workflow_dispatch:
+  #push:
+    #branches:
+      #- deployer-test-workflow
+  #pull_request:
+    #branches:
+      #- develop
+
+# Authenticate to the the deployment server via ssh
+# and run our deployer script
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy to server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DEPLOYER_HOST }}
+          username: ${{ secrets.DEPLOYER_USERNAME }}
+          port: ${{ secrets.DEPLOYER_PORT }}
+          key: ${{ secrets.DEPLOYER_SSHKEY }}
+          script: 'cd /home/ubuntu/deployer/ && dep deploy'
+     
