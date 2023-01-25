@@ -1,0 +1,25 @@
+name: Deployer New
+
+on:
+    workflow_dispatch:
+
+jobs:
+    deploy:
+        name: Deployment
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v2
+
+            - name: Setup PHP
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: 7.4
+
+            - name: Install Dependencies
+              run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+
+            - name: Deploy
+              uses: deployphp/action@master
+              with:
+                  dep: deploy
