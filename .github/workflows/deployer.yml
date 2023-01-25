@@ -24,5 +24,5 @@ jobs:
           username: ${{ secrets.DEPLOYER_USERNAME }}
           port: ${{ secrets.DEPLOYER_PORT }}
           key: ${{ secrets.DEPLOYER_SSHKEY }}
-          script: 'cd /home/ubuntu/deployer/ && dep deploy'
+          script: 'cd /home/ubuntu/deployer && dep deploy'
      
