@@ -20,7 +20,7 @@ jobs:
               run: sudo apt install composer
 
             - name: Set Up Deployer
-              run: curl -LO https://deployer.org/deployer.phar && mv deployer.phar bin/dep && sudo chmod +x bin/dep
+              run: curl -LO https://deployer.org/deployer.phar && sudo mv deployer.phar /usr/local/bin/dep && sudo chmod +x /usr/local/bin/dep
 
             - name: Set Up composer requirement
               run: composer require rafaelstz/deployer-magento2 --dev
