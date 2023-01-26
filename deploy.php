@@ -51,7 +51,7 @@ host('Staging')
 ->set('is_production', 0)
 ->roles('roles  ')
 //->configFile('~/.ssh/config')
-->identityFile('dev-magento-v2.ppk')
+//->identityFile('dev-magento-v2.ppk')
 ->addSshOption('UserKnownHostsFile', '/dev/null')
 ->addSshOption('StrictHostKeyChecking', 'no');
 
